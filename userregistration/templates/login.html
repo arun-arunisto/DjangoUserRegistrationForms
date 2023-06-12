@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Login</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+<div class="heading">
+    <h2>User Login</h2>
+</div>
+<hr>
+{% for message in messages %}
+    <p>{{message}}</p>
+{% endfor %}
+<div class="form">
+    <form method="post">
+        {% for field in form %}
+        <div class="inputfields">
+            <label>{{field.label}}</label>
+            <br>
+            {{ field }}
+        </div>
+        {% endfor %}
+        {% csrf_token %}
+        <div class="inputfields">
+            <input type="submit" value="Login">
+        </div>
+    </form>
+</div>
+</body>
+</html>

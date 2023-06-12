@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Register</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}"
+</head>
+<body>
+<div class="heading">
+    <h2>User Registration Form</h2>
+</div>
+<hr>
+<div class="form">
+    <form method="post">
+        {% for field in form %}
+        <div class="inputfields">
+            <label>{{field.label}}</label>
+            <br>
+            {{ field }}
+        </div>
+        {% for error in field.errors %}
+            <p>{{error}}</p>
+        {% endfor %}
+        {% endfor %}
+        {% csrf_token %}
+        <div class="inputfields">
+            <input type="submit" value="Register">
+        </div>
+    </form>
+</div>
+</body>
+</html>
